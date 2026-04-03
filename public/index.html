@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agent Repo</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Inbox Agent / Personal Capture System</p>
+          <h1><span>Capture fast.</span> <span>Retrieve clean.</span> <span>Lose nothing important.</span></h1>
+          <p class="lede">
+            Pegá mensajes como si te los mandaras por WhatsApp o Telegram. El agente los clasifica,
+            detecta recursos y te deja todo listo para recuperar después.
+          </p>
+          <div class="hero-strip">
+            <span class="strip-pill active">telegram live</span>
+            <span class="strip-pill">resource routing</span>
+            <span class="strip-pill">batch capture</span>
+            <span class="strip-pill">local memory</span>
+          </div>
+        </div>
+        <div id="stats" class="stats-grid"></div>
+      </section>
+
+      <section class="panel panel-split">
+        <form id="ingest-form" class="composer">
+          <label for="message">Mensaje</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            placeholder="Ej: Guardar este repo para reutilizar luego en auth https://github.com/example/repo"
+          ></textarea>
+          <p class="hint">
+            Podés pegar varios mensajes: uno por línea. Si hay más de una línea con contenido, se procesan en lote.
+          </p>
+          <div class="actions">
+            <button type="submit">Guardar en el agente</button>
+            <button type="button" id="load-items" class="secondary">Recargar items</button>
+          </div>
+        </form>
+
+        <div class="response-box">
+          <p class="box-title">Respuesta del agente</p>
+          <pre id="agent-reply">Todavía no procesaste ningún mensaje.</pre>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="toolbar">
+          <div>
+            <label for="search">Buscar</label>
+            <input id="search" type="text" placeholder="repo, deploy, idea..." />
+          </div>
+          <div>
+            <label for="category">Categoría</label>
+            <select id="category">
+              <option value="">Todas</option>
+              <option value="task">task</option>
+              <option value="idea">idea</option>
+              <option value="reminder">reminder</option>
+              <option value="follow_up">follow_up</option>
+              <option value="note">note</option>
+              <option value="resource">resource</option>
+            </select>
+          </div>
+          <div>
+            <label for="status">Estado</label>
+            <select id="status">
+              <option value="">Todas</option>
+              <option value="open">open</option>
+              <option value="done">done</option>
+              <option value="archived">archived</option>
+            </select>
+          </div>
+          <div>
+            <label for="resource-type">Tipo de recurso</label>
+            <select id="resource-type">
+              <option value="">Todos</option>
+              <option value="repo">repo</option>
+              <option value="article">article</option>
+              <option value="video">video</option>
+              <option value="tool">tool</option>
+              <option value="documentation">documentation</option>
+              <option value="reference">reference</option>
+            </select>
+          </div>
+          <div class="checkbox-wrap">
+            <label for="has-link">Solo con link</label>
+            <input id="has-link" type="checkbox" />
+          </div>
+          <div>
+            <label for="project">Proyecto</label>
+            <input id="project" type="text" placeholder="auth, admin, cliente-x" />
+          </div>
+          <div>
+            <label for="date-from">Desde</label>
+            <input id="date-from" type="date" />
+          </div>
+          <div>
+            <label for="date-to">Hasta</label>
+            <input id="date-to" type="date" />
+          </div>
+          <button id="search-btn" type="button">Buscar</button>
+        </div>
+        <div class="quick-filters">
+          <button type="button" class="quick-chip" data-category="">Todo</button>
+          <button type="button" class="quick-chip" data-category="resource">Recursos</button>
+          <button type="button" class="quick-chip" data-resource-type="repo">Repos</button>
+          <button type="button" class="quick-chip" data-resource-type="documentation">Docs</button>
+          <button type="button" class="quick-chip" data-resource-type="tool">Tools</button>
+          <button type="button" class="quick-chip" data-category="follow_up">Seguimientos</button>
+          <button type="button" class="quick-chip" data-category="idea">Ideas</button>
+        </div>
+
+        <div id="items" class="items"></div>
+      </section>
+    </main>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

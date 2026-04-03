@@ -1,0 +1,20 @@
+{
+  "name": "agent-repo",
+  "version": "0.1.0",
+  "description": "AI capture and retrieval agent with Telegram, structured memory, validation, and operational workflows.",
+  "type": "module",
+  "keywords": [
+    "ai-agent",
+    "telegram-bot",
+    "agent-memory",
+    "retrieval",
+    "prompting",
+    "agent-ops"
+  ],
+  "scripts": {
+    "start": "node --env-file=.env src/index.js",
+    "telegram": "node --env-file=.env src/index.js",
+    "demo": "node src/demo.js",
+    "check": "node --check src/index.js && node --check src/demo.js && node --check src/agent.js && node --check src/classifier.js && node --check src/storage.js && node --check src/llm-classifier.js && node --check src/telegram.js && node --check src/transcription.js && node --check src/validation.js"
+  }
+}
